@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Bootstrap Site</title>
+  </head>
+ <style>
+        body {
+            background-color: white;
+            color: black;
+            transition: background 0.2s, color 0.2s;
+            font-family: Arial, sans-serif;
+        }
+        body.dark-mode {
+            background-color: #181818;
+            color: #f1f1f1;
+        }
+        #changeTheme {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            padding: 10px 18px;
+            background: #eee;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            z-index: 1000;
+        }
+        body.dark-mode #changeTheme {
+            background: #292929;
+            color: #f1f1f1;
+        }
+        h1 {
+            margin-top: 70px;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn" id="changeTheme" aria-label="Toggle dark mode">Change Theme</button>
+    <script>
+        const themeButton = document.getElementById('changeTheme');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        themeButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+    
+ 
+
+
+    <h1 class="text-center my-5">Form Validation</h1>
+
+    <div class="container w-50 mx-auto bg-secondary p-3">
+      <!-- Username -->
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Username"
+          id="userNameInput"
+        />
+      </div>
+      <div id="usermsg"></div>
+
+      <!-- Email -->
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="E-mail"
+          id="emailInput"
+        />
+      </div>
+      <div id="emailmsg"></div>
+
+      <!-- Password -->
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          id="passInput"
+        />
+      </div>
+      <div id="passmsg"></div>
+
+      <button class="btn btn-primary mt-3" id="registerBTN">Register</button>
+    </div>
+
+    <script>
+      function register() {
+        const userNameInputValue = document.querySelector("#userNameInput").value.trim();
+        const emailInputValue = document.querySelector("#emailInput").value.trim();
+        const passInputValue = document.querySelector("#passInput").value.trim();
+
+        // Username validation
+        if (userNameInputValue.length > 0) {
+          document.querySelector("#usermsg").innerHTML = `
+            <div class="alert alert-success" role="alert">
+              <i class="fa-solid fa-check-circle"></i> Username added successfully
+            </div>`;
+        } else {
+          document.querySelector("#usermsg").innerHTML = `
+            <div class="alert alert-danger" role="alert">
+              <i class="fa-solid fa-exclamation-triangle"></i> Username should not be empty
+            </div>`;
+        }
+
+        // Email validation
+        if (emailInputValue.length > 0) {
+          document.querySelector("#emailmsg").innerHTML = `
+            <div class="alert alert-success" role="alert">
+              <i class="fa-solid fa-check-circle"></i> Email added successfully
+            </div>`;
+        } else {
+          document.querySelector("#emailmsg").innerHTML = `
+            <div class="alert alert-danger" role="alert">
+              <i class="fa-solid fa-exclamation-triangle"></i> Email should not be empty
+            </div>`;
+        }
+
+        // Password validation
+        if (passInputValue.length >= 6) {
+          document.querySelector("#passmsg").innerHTML = `
+            <div class="alert alert-success" role="alert">
+              <i class="fa-solid fa-check-circle"></i> Password added successfully
+            </div>`;
+        } else {
+          document.querySelector("#passmsg").innerHTML = `
+            <div class="alert alert-danger" role="alert">
+              <i class="fa-solid fa-exclamation-triangle"></i> Password should not be empty and must contain atleast 6 characters
+            </div>`;
+        }
+      }
+
+      document.querySelector("#registerBTN").addEventListener("click", register);
+    </script>
+    <hr>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
