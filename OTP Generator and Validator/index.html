@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OTP Generator and Validator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap 5 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .otp-input {
+        width: 50px;
+        text-align: center;
+        font-size: 1.5rem;
+      }
+      .otp-input:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem #0d6efd33;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5 w-75">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="mb-3 text-center">4-Digit OTP Generator & Validator</h4>
+              <button class="btn btn-primary mb-3" onclick="generateOTP()">
+                Generate OTP
+              </button>
+              <form id="otpForm" onsubmit="validateOTP(event)">
+                <div class="d-flex justify-content-between mb-3">
+                  <input
+                    type="text"
+                    maxlength="1"
+                    class="form-control otp-input"
+                    id="digit1"
+                    required
+                    pattern="[0-9]"
+                  />
+                  <input
+                    type="text"
+                    maxlength="1"
+                    class="form-control otp-input"
+                    id="digit2"
+                    required
+                    pattern="[0-9]"
+                  />
+                  <input
+                    type="text"
+                    maxlength="1"
+                    class="form-control otp-input"
+                    id="digit3"
+                    required
+                    pattern="[0-9]"
+                  />
+                  <input
+                    type="text"
+                    maxlength="1"
+                    class="form-control otp-input"
+                    id="digit4"
+                    required
+                    pattern="[0-9]"
+                  />
+                </div>
+                <button type="submit" class="btn btn-success w-100">
+                  Validate OTP
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
